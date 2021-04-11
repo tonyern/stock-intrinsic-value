@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SearchBar from "./components/search-bar/SearchBar";
 
 const App = (): JSX.Element => {
+  const [weather, setWeather] = useState({});
+  const [background, setBackground] = useState("App");
+
   return (
     <>
-      <h1>Hello World!</h1>
+      <main>
+        <SearchBar searchProps={setWeather} getBackground={setBackground} />
+      </main>
     </>
   );
 }
