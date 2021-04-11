@@ -7,9 +7,9 @@ interface SearchBarInterface {
 };
 
 const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
-  const openWeatherMapAPI = {
-    key: "8713314e929a6ae57041a78e979b402d",
-    base: "http://api.openweathermap.org/data/2.5/",
+  const alphaVantageAPI = {
+    key: "NCZ4EHV0ASHS9UYK",
+    base: "https://www.alphavantage.co/query?",
   };
 
   const [query, setQuery] = useState("");
@@ -25,7 +25,7 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
     if (event.key === "Enter") {
       axios
         .get(
-          `${openWeatherMapAPI.base}weather?q=${query}&units=metric&APPID=${openWeatherMapAPI.key}`
+          `${alphaVantageAPI.base}function=INCOME_STATEMENT&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
           searchProps(response.data);
