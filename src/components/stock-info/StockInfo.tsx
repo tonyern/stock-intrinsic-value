@@ -1,10 +1,11 @@
-import React from "react";
+import "./stock-info.css";
 
-const StockInfo = (): JSX.Element => {
+// @ts-ignore
+const StockInfo = ({ stockData }): JSX.Element => {
     return (
-        <div>
-            <h1>Hello World!</h1>
-        </div>
+        <>
+            <h1>{stockData.symbol}</h1>
+        </>
     )
 }
 

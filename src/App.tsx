@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SearchBar from "./components/search-bar/SearchBar";
+import StockInfo from "./components/stock-info/StockInfo";
 
 const App = (): JSX.Element => {
   const [stock, setStock] = useState({});
@@ -8,6 +9,7 @@ const App = (): JSX.Element => {
     <>
       <main>
         <SearchBar searchProps={setStock} />
+        <StockInfo stockData={stock} />
       </main>
     </>
   );
