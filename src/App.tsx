@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import SearchBar from "./components/search-bar/SearchBar";
 
 const App = (): JSX.Element => {
-  const [weather, setWeather] = useState({});
-  const [background, setBackground] = useState("App");
+  const [stock, setStock] = useState({});
 
   return (
     <>
       <main>
-        <SearchBar searchProps={setWeather} getBackground={setBackground} />
+        <SearchBar searchProps={setStock} />
       </main>
     </>
   );

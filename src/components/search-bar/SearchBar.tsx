@@ -4,10 +4,9 @@ import "./search-bar.css";
 
 interface SearchBarInterface {
   searchProps: React.Dispatch<React.SetStateAction<{}>>;
-  getBackground: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const SearchBar = ({ searchProps, getBackground }: SearchBarInterface): JSX.Element => {
+const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
   const openWeatherMapAPI = {
     key: "8713314e929a6ae57041a78e979b402d",
     base: "http://api.openweathermap.org/data/2.5/",
@@ -30,7 +29,6 @@ const SearchBar = ({ searchProps, getBackground }: SearchBarInterface): JSX.Elem
         )
         .then((response: AxiosResponse<any>) => {
           searchProps(response.data);
-          getBackground("App ".concat(response.data.weather[0].main));
           console.log(response.data);
         })
         .catch((error: any) => {
