@@ -2,6 +2,10 @@ body {
   text-align: center;
 }
 
+.company-key-metrics {
+  width: 100%;
+}
+
 .company-overview-box {
   text-align: center;
 }

@@ -15,8 +15,24 @@ const StockInfo = ({ stockData }): JSX.Element => {
                         <p>{stockData.Description}</p>
                     </div>
                     <div className="company-key-metrics-box">
-                        <h4>Earnings Per Share (EPS) = {roundNumber(stockData.EPS)}</h4>
-                        <h4>Price/Earnings Ratio (PE) = {roundNumber(stockData.PERatio)}</h4>
+                        <table className="company-key-metrics">
+                            <tbody>
+                                <tr>
+                                    <th>EPS</th>
+                                    <th>Return on Invested Capital (ROIC)</th>
+                                    <th>Interest Coverage Ratio</th>
+                                    <th>Debt Payback Time</th>
+                                    <th>PE Ratio</th>
+                                </tr>
+                                <tr>
+                                    <td>{stockData.EPS}</td>
+                                    <td>0.0</td>
+                                    <td>0.0</td>
+                                    <td>0.0</td>
+                                    <td>{stockData.PERatio}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </>
             ) : (
