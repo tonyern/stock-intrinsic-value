@@ -23,7 +23,13 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
 
   const search = (event: React.KeyboardEvent<HTMLDivElement>): void => {
     if (event.key === "Enter") {
-      axios
+      getOverview();
+      setQuery("");
+    }
+  };
+
+  const getOverview = (): void => {
+    axios
         .get(
           `${alphaVantageAPI.base}function=OVERVIEW&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
@@ -41,10 +47,7 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           // Other errors.
           console.log(error.message);
         });
-
-      setQuery("");
-    }
-  };
+  }
 
   return (
     <div className="search-box">
