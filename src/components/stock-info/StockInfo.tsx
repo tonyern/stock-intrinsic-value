@@ -70,8 +70,8 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                 </>
             ) : (
                 <>
-                    <h1>Welcome to Stock Intrinsic Value Calculator!</h1>
-                    <h3>Please enter a stock ticker</h3>
+                    <h1 className="welcome-title">Welcome to Stock Intrinsic Value Calculator!</h1>
+                    <h3 className="welcome-subtitle">Please enter a stock ticker</h3>
                 </>
             )}
         </div>

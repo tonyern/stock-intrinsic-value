@@ -13,3 +13,14 @@ body {
 .company-key-metrics-box {
   text-align: center;
 }
+
+.welcome-title {
+  font-size: 48px;
+  font-weight: 550;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.welcome-subtitle {
+  font-size: 28px;
+  font-weight: 400;
+}
