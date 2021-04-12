@@ -25,7 +25,7 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
     if (event.key === "Enter") {
       axios
         .get(
-          `${alphaVantageAPI.base}function=INCOME_STATEMENT&symbol=${query}&apikey=${alphaVantageAPI.key}`
+          `${alphaVantageAPI.base}function=OVERVIEW&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
           searchProps(response.data);
