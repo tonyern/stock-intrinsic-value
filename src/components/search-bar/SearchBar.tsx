@@ -38,7 +38,7 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           console.log(response.data);
         })
         .catch((error: any) => {
-          // Error if city name was not found or invalid input.
+          // Error if stock name was not found or invalid input.
           if (error.response) console.log(error.response.data);
           
           // Error if no response was received.
@@ -59,7 +59,28 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           console.log(response.data);
         })
         .catch((error: any) => {
-          // Error if city name was not found or invalid input.
+          // Error if stock name was not found or invalid input.
+          if (error.response) console.log(error.response.data);
+          
+          // Error if no response was received.
+          if (error.request) console.log(error.request);
+
+          // Other errors.
+          console.log(error.message);
+        });
+  }
+
+  const getCashFlow = (): void => {
+    axios
+        .get(
+          `${alphaVantageAPI.base}function=CASH_FLOW&symbol=${query}&apikey=${alphaVantageAPI.key}`
+        )
+        .then((response: AxiosResponse<any>) => {
+          searchProps(response.data);
+          console.log(response.data);
+        })
+        .catch((error: any) => {
+          // Error if stock was not found or invalid input.
           if (error.response) console.log(error.response.data);
           
           // Error if no response was received.
