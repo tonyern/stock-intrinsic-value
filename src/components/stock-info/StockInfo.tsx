@@ -5,6 +5,27 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
     const roundNumber = (value: number): number => {
         return Math.round(value);
     };
+    
+    /**
+     * How long would a company take to payback its debts with given parameters.
+     * @param longTermDebt Debt the company has to payback within years.
+     * @param operatingCashFlow How much many a company makes operating.
+     * @param capitalExpenditures Money used to buy, improve, or repair assets.
+     * @returns How long it would take a company to payback their debts.
+     */
+    const debtPaybackTime = (longTermDebt: number, operatingCashFlow: number, capitalExpenditures: number): number => {
+        return longTermDebt / calculateFreeCashFlow(operatingCashFlow, capitalExpenditures);
+    }
+
+    /**
+     * Calculating free cash flow of a company.
+     * @param operatingCashFlow How much many a company makes operating.
+     * @param capitalExpenditures Money used to buy, improve, or repair assets.
+     * @returns Free Cash Flow
+     */
+    const calculateFreeCashFlow = (operatingCashFlow: number, capitalExpenditures: number): number => {
+        return operatingCashFlow - capitalExpenditures;
+    }
 
     return (
         <div data-testid="stock-info-test">
