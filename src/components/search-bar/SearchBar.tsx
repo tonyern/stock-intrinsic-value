@@ -28,6 +28,10 @@ const SearchBar = ({
     }
   });
 
+  /**
+   * Make API request if keyboard pressed is "enter".
+   * @param event Tracking keyboard presses.
+   */
   const search = (event: React.KeyboardEvent<HTMLDivElement>): void => {
     if (event.key === "Enter") {
       getOverview();
