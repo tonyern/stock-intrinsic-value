@@ -3,13 +3,13 @@ import SearchBar from "./components/search-bar/SearchBar";
 import StockInfo from "./components/stock-info/StockInfo";
 
 const App = (): JSX.Element => {
-  const [stock, setStock] = useState({});
+  const [stockOverview, setStockOverview] = useState({});
 
   return (
     <>
       <main>
-        <SearchBar searchProps={setStock} />
-        <StockInfo stockData={stock} />
+        <SearchBar searchProps={setStockOverview} />
+        <StockInfo stockOverview={stockOverview} />
       </main>
     </>
   );

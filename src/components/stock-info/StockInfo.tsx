@@ -1,18 +1,18 @@
 import "./stock-info.css";
 
 // @ts-ignore
-const StockInfo = ({ stockData }): JSX.Element => {
+const StockInfo = ({ stockOverview }): JSX.Element => {
     const roundNumber = (value: number): number => {
         return Math.round(value);
     };
 
     return (
         <div data-testid="stock-info-test">
-            {stockData.Symbol !== undefined ? (
+            {stockOverview.Symbol !== undefined ? (
                 <>
                     <div className="company-overview-box">
-                        <h1>{stockData.Name} ({stockData.Symbol})</h1>
-                        <p>{stockData.Description}</p>
+                        <h1>{stockOverview.Name} ({stockOverview.Symbol})</h1>
+                        <p>{stockOverview.Description}</p>
                     </div>
                     <div className="company-key-metrics-box">
                         <table className="company-key-metrics">
@@ -25,11 +25,11 @@ const StockInfo = ({ stockData }): JSX.Element => {
                                     <th>PE Ratio</th>
                                 </tr>
                                 <tr>
-                                    <td>{stockData.EPS}</td>
+                                    <td>{stockOverview.EPS}</td>
                                     <td>0.0</td>
                                     <td>0.0</td>
                                     <td>0.0</td>
-                                    <td>{stockData.PERatio}</td>
+                                    <td>{stockOverview.PERatio}</td>
                                 </tr>
                             </tbody>
                         </table>
