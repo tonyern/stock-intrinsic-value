@@ -1,7 +1,7 @@
 import "./stock-info.css";
 
 // @ts-ignore
-const StockInfo = ({ stockOverview }): JSX.Element => {
+const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncomeStatement }): JSX.Element => {
     const roundNumber = (value: number): number => {
         return Math.round(value);
     };
