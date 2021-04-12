@@ -11,7 +11,11 @@ const App = (): JSX.Element => {
   return (
     <>
       <main>
-        <SearchBar searchProps={setStockOverview} />
+        <SearchBar 
+          overviewProps={setStockOverview}
+          balanceSheetProps={setBalanceSheet}
+          cashFlowProps={setStockCashFlow}
+          incomeStatementProps={setStockIncomeStatement} />
         <StockInfo 
           stockOverview={stockOverview} 
           stockBalanceSheet={stockBalanceSheet}

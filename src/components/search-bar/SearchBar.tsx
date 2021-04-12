@@ -3,10 +3,18 @@ import axios, { AxiosResponse } from "axios";
 import "./search-bar.css";
 
 interface SearchBarInterface {
-  searchProps: React.Dispatch<React.SetStateAction<{}>>;
+  overviewProps: React.Dispatch<React.SetStateAction<{}>>;
+  balanceSheetProps: React.Dispatch<React.SetStateAction<{}>>;
+  cashFlowProps: React.Dispatch<React.SetStateAction<{}>>;
+  incomeStatementProps: React.Dispatch<React.SetStateAction<{}>>;
 };
 
-const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
+const SearchBar = (
+  { 
+    overviewProps, 
+    balanceSheetProps, 
+    cashFlowProps, 
+    incomeStatementProps }: SearchBarInterface): JSX.Element => {
   const alphaVantageAPI = {
     key: "NCZ4EHV0ASHS9UYK",
     base: "https://www.alphavantage.co/query?",
@@ -24,6 +32,9 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
   const search = (event: React.KeyboardEvent<HTMLDivElement>): void => {
     if (event.key === "Enter") {
       getOverview();
+      getBalanceSheet();
+      getCashFlow();
+      getIncomeStatement();
       setQuery("");
     }
   };
@@ -34,7 +45,8 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           `${alphaVantageAPI.base}function=OVERVIEW&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
-          searchProps(response.data);
+          overviewProps(response.data);
+          console.log("OVERVIEW");
           console.log(response.data);
         })
         .catch((error: any) => {
@@ -55,7 +67,8 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           `${alphaVantageAPI.base}function=BALANCE_SHEET&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
-          searchProps(response.data);
+          balanceSheetProps(response.data);
+          console.log("BALANCE SHEET");
           console.log(response.data);
         })
         .catch((error: any) => {
@@ -76,7 +89,8 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           `${alphaVantageAPI.base}function=CASH_FLOW&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
-          searchProps(response.data);
+          cashFlowProps(response.data);
+          console.log("CASH FLOW");
           console.log(response.data);
         })
         .catch((error: any) => {
@@ -97,7 +111,8 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           `${alphaVantageAPI.base}function=INCOME_STATEMENT&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
-          searchProps(response.data);
+          incomeStatementProps(response.data);
+          console.log("INCOME STATEMENT");
           console.log(response.data);
         })
         .catch((error: any) => {
