@@ -47,7 +47,7 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           // Other errors.
           console.log(error.message);
         });
-  }
+  };
 
   const getBalanceSheet = (): void => {
     axios
@@ -68,7 +68,7 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           // Other errors.
           console.log(error.message);
         });
-  }
+  };
 
   const getCashFlow = (): void => {
     axios
@@ -89,7 +89,28 @@ const SearchBar = ({ searchProps }: SearchBarInterface): JSX.Element => {
           // Other errors.
           console.log(error.message);
         });
-  }
+  };
+
+  const getIncomeStatement = (): void => {
+    axios
+        .get(
+          `${alphaVantageAPI.base}function=INCOME_STATEMENT&symbol=${query}&apikey=${alphaVantageAPI.key}`
+        )
+        .then((response: AxiosResponse<any>) => {
+          searchProps(response.data);
+          console.log(response.data);
+        })
+        .catch((error: any) => {
+          // Error if stock was not found or invalid input.
+          if (error.response) console.log(error.response.data);
+          
+          // Error if no response was received.
+          if (error.request) console.log(error.request);
+
+          // Other errors.
+          console.log(error.message);
+        });
+  };
 
   return (
     <div className="search-box">
