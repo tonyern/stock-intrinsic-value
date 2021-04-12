@@ -9,8 +9,7 @@ interface SearchBarInterface {
   incomeStatementProps: React.Dispatch<React.SetStateAction<{}>>;
 };
 
-const SearchBar = (
-  { 
+const SearchBar = ({ 
     overviewProps, 
     balanceSheetProps, 
     cashFlowProps, 
