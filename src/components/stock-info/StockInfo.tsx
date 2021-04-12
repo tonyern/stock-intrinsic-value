@@ -5,6 +5,16 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
     const roundNumber = (value: number): number => {
         return Math.round(value);
     };
+
+    /**
+     * 
+     * @param operatingIncome 
+     * @param interestExpense 
+     * @returns Interest Coverage Ratio.
+     */
+    const interestCoverageRatio = (operatingIncome: number, interestExpense: number): number => {
+        return operatingIncome / interestExpense;
+    }
     
     /**
      * How long would a company take to payback its debts with given parameters.
@@ -15,7 +25,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
      */
     const debtPaybackTime = (longTermDebt: number, operatingCashFlow: number, capitalExpenditures: number): number => {
         return longTermDebt / calculateFreeCashFlow(operatingCashFlow, capitalExpenditures);
-    }
+    };
 
     /**
      * Calculating free cash flow of a company.
@@ -25,7 +35,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
      */
     const calculateFreeCashFlow = (operatingCashFlow: number, capitalExpenditures: number): number => {
         return operatingCashFlow - capitalExpenditures;
-    }
+    };
 
     return (
         <div data-testid="stock-info-test">
