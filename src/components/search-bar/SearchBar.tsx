@@ -49,7 +49,7 @@ const SearchBar = ({
         )
         .then((response: AxiosResponse<any>) => {
           overviewProps(response.data);
-          console.log("OVERVIEW");
+          //console.log("OVERVIEW");
           console.log(response.data);
         })
         .catch((error: any) => {
@@ -71,8 +71,8 @@ const SearchBar = ({
         )
         .then((response: AxiosResponse<any>) => {
           balanceSheetProps(response.data);
-          console.log("BALANCE SHEET");
-          console.log(response.data);
+          //console.log("BALANCE SHEET");
+          //console.log(response.data);
         })
         .catch((error: any) => {
           // Error if stock name was not found or invalid input.
@@ -93,8 +93,8 @@ const SearchBar = ({
         )
         .then((response: AxiosResponse<any>) => {
           cashFlowProps(response.data);
-          console.log("CASH FLOW");
-          console.log(response.data);
+          //console.log("CASH FLOW");
+          //console.log(response.data);
         })
         .catch((error: any) => {
           // Error if stock was not found or invalid input.
@@ -115,8 +115,8 @@ const SearchBar = ({
         )
         .then((response: AxiosResponse<any>) => {
           incomeStatementProps(response.data);
-          console.log("INCOME STATEMENT");
-          console.log(response.data);
+          //console.log("INCOME STATEMENT");
+          //console.log(response.data);
         })
         .catch((error: any) => {
           // Error if stock was not found or invalid input.
