@@ -109,8 +109,8 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
             stockIncomeStatement.symbol !== undefined ? (
                 <>
                     <div className="company-overview-box">
-                        <h1>{stockOverview.Name} ({stockOverview.Symbol})</h1>
-                        <p>{stockOverview.Description}</p>
+                        <div className="company-name">{stockOverview.Name} ({stockOverview.Symbol})</div>
+                        <div className="company-about">{stockOverview.Description}</div>
                     </div>
                     <div className="company-key-metrics-box">
                         <table className="company-key-metrics">
@@ -168,10 +168,10 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                     </div>
                 </>
             ) : (
-                <>
+                <div className="welcome-box">
                     <h1 className="welcome-title">Welcome to Stock Intrinsic Value Calculator!</h1>
                     <h3 className="welcome-subtitle">Please enter a stock ticker</h3>
-                </>
+                </div>
             )}
         </div>
     );

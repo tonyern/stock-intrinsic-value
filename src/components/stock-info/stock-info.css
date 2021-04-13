@@ -1,26 +1,37 @@
 body {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.company-key-metrics {
+.company-overview-box .company-name {
+  font-size: 48px;
+  color: black;
+  font-weight: 900;
+}
+
+.company-overview-box .company-about {
+  font-size: 16px;
+  color: black;
+  text-align: justify;
+  line-height: 1.5em;
+}
+
+.company-key-metrics-box .company-key-metrics {
   width: 100%;
 }
 
-.company-overview-box {
-  text-align: center;
+.welcome-box {
+  position: relative;
 }
 
-.company-key-metrics-box {
-  text-align: center;
-}
-
-.welcome-title {
+.welcome-box .welcome-title {
   font-size: 48px;
-  font-weight: 550;
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  color: black;
+  font-weight: 900;
 }
 
-.welcome-subtitle {
+.welcome-box .welcome-subtitle {
   font-size: 28px;
+  color: black;
   font-weight: 400;
 }
