@@ -58,9 +58,11 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                 <tr>
                                     <td>{stockOverview.EPS}</td>
                                     <td>0.0</td>
-                                    <td>{interestCoverageRatio(
+                                    {typeof stockIncomeStatement.annualReports !== undefined ? (
+                                        <td>{interestCoverageRatio(
                                         stockIncomeStatement.annualReports[0].operatingIncome, 
                                         stockIncomeStatement.annualReports[0].interestExpense)}</td>
+                                    ): (<td>0.0</td>)}
                                     <td>0.0</td>
                                     <td>{stockOverview.PERatio}</td>
                                 </tr>
