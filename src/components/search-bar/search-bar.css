@@ -7,7 +7,7 @@
 .search-box .search-bar {
   display: block;
   width: 100%;
-  padding: 15px;
+  padding: 3px;
 
   appearance: none;
   background: none;
@@ -27,5 +27,5 @@
 
 /* Color of the bar changes when user clicks on the bar. */
 .search-box .search-bar:focus {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(235, 235, 235, 0.5);
 }
