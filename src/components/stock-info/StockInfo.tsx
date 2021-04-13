@@ -2,8 +2,72 @@ import "./stock-info.css";
 
 // @ts-ignore
 const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncomeStatement }): JSX.Element => {
-    const roundNumber = (value: number): number => {
+    /*const roundNumber = (value: number): number => {
         return Math.round(value);
+    };*/
+
+    /**
+     * Measures how effectively a capital is using its invested capital
+     * to make money.
+     * @param ebit 
+     * @param marginalTaxRate 
+     * @param currentLiabilities 
+     * @param longTermDebt 
+     * @param commonStock 
+     * @param retainedEarnings 
+     * @param cashFromFinancing 
+     * @param cashFromInvesting 
+     * @returns 
+     */
+    const returnOnInvestedCapital = (
+        ebit: number, 
+        marginalTaxRate: number,
+        currentLiabilities: number, 
+        longTermDebt: number, 
+        commonStock: number, 
+        retainedEarnings: number,
+        cashFromFinancing: number,
+        cashFromInvesting: number
+    ): number => {
+        return calculateNOPAT(ebit, marginalTaxRate) /
+            investedCapital(
+                currentLiabilities, 
+                longTermDebt, 
+                commonStock, 
+                retainedEarnings, 
+                cashFromFinancing, 
+                cashFromInvesting);
+    }
+
+    /**
+     * Calculating net operating profit after taxes.
+     * @param ebit Earnings before interest and taxes.
+     * @param marginalTaxRate Firm's tax rate.
+     * @returns 
+     */
+    const calculateNOPAT = (ebit: number, marginalTaxRate: number): number => {
+        return ebit * (1 - marginalTaxRate);
+    };
+
+    /**
+     * Calculate invested capital of a company.
+     * @param currentLiabilities 
+     * @param longTermDebt 
+     * @param commonStock 
+     * @param retainedEarnings 
+     * @param cashFromFinancing 
+     * @param cashFromInvesting 
+     * @returns 
+     */
+    const investedCapital = (
+        currentLiabilities: number, 
+        longTermDebt: number, 
+        commonStock: number, 
+        retainedEarnings: number,
+        cashFromFinancing: number,
+        cashFromInvesting: number): number => {
+        return currentLiabilities + longTermDebt + commonStock + retainedEarnings + 
+            cashFromFinancing + cashFromInvesting;
     };
 
     /**
@@ -14,7 +78,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
      */
     const interestCoverageRatio = (operatingIncome: number, interestExpense: number): number => {
         return operatingIncome / interestExpense;
-    }
+    };
     
     /**
      * How long would a company take to payback its debts with given parameters.
@@ -39,7 +103,10 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
 
     return (
         <div data-testid="stock-info-test">
-            {stockOverview.Symbol !== undefined ? (
+            {stockOverview.Symbol !== undefined &&
+            stockBalanceSheet.symbol !== undefined &&
+            stockCashFlow.symbol !== undefined &&
+            stockIncomeStatement.symbol !== undefined ? (
                 <>
                     <div className="company-overview-box">
                         <h1>{stockOverview.Name} ({stockOverview.Symbol})</h1>
@@ -56,14 +123,44 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                     <th>PE Ratio</th>
                                 </tr>
                                 <tr>
+                                    {/** Below is the earnings per share. */}
                                     <td>{stockOverview.EPS}</td>
-                                    <td>0.0</td>
+                                    {/** Below is the return on invested capital. */}
+                                    {typeof stockBalanceSheet.annualReports !== undefined &&
+                                    stockCashFlow.annualReports !== undefined &&
+                                    stockIncomeStatement.annualReports !== undefined ? (
+                                        <td>
+                                            {returnOnInvestedCapital(
+                                                stockIncomeStatement.annualReports[0].ebit,
+                                                0.50,
+                                                stockBalanceSheet.annualReports[0].totalCurrentLiabilities,
+                                                stockBalanceSheet.annualReports[0].longTermDebt,
+                                                stockBalanceSheet.annualReports[0].commonStock,
+                                                stockBalanceSheet.annualReports[0].retainedEarnings,
+                                                stockCashFlow.annualReports[0].cashflowFromInvestment,
+                                                stockCashFlow.annualReports[0].cashflowFromFinancing
+                                            )}
+                                        </td>
+                                    ): (<td>N/A</td>)}
+                                    {/** Below is interest coverage ratio. */}
                                     {typeof stockIncomeStatement.annualReports !== undefined ? (
-                                        <td>{interestCoverageRatio(
-                                        stockIncomeStatement.annualReports[0].operatingIncome, 
-                                        stockIncomeStatement.annualReports[0].interestExpense)}</td>
-                                    ): (<td>0.0</td>)}
-                                    <td>0.0</td>
+                                        <td>
+                                            {interestCoverageRatio(
+                                            stockIncomeStatement.annualReports[0].operatingIncome, 
+                                            stockIncomeStatement.annualReports[0].interestExpense)}
+                                        </td>
+                                    ): (<td>N/A</td>)}
+                                    {/** Below is debt payback time. */}
+                                    {typeof stockBalanceSheet.annualReports !== undefined &&
+                                    typeof stockCashFlow.annualReports !== undefined ? (
+                                        <td>
+                                            {debtPaybackTime(
+                                            stockBalanceSheet.annualReports[0].longTermDebt,
+                                            stockCashFlow.annualReports[0].operatingCashflow,
+                                            stockCashFlow.annualReports[0].capitalExpenditures)}
+                                        </td>
+                                    ): (<td>N/A</td>)}
+                                    {/** Below is the PE Ratio. */}
                                     <td>{stockOverview.PERatio}</td>
                                 </tr>
                             </tbody>
