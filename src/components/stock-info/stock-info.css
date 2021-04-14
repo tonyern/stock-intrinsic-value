@@ -25,6 +25,8 @@ body {
 }
 
 .welcome-box .welcome-title {
+  margin-bottom: 40px;
+
   font-size: 48px;
   color: black;
   font-weight: 900;

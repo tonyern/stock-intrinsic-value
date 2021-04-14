@@ -169,8 +169,8 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                 </>
             ) : (
                 <div className="welcome-box">
-                    <h1 className="welcome-title">Welcome to Stock Intrinsic Value Calculator!</h1>
-                    <h3 className="welcome-subtitle">Please enter a stock ticker</h3>
+                    <div className="welcome-title">Welcome to Stock Intrinsic Value Calculator!</div>
+                    <div className="welcome-subtitle">Please enter a stock ticker</div>
                 </div>
             )}
         </div>
