@@ -4,7 +4,7 @@ body {
 }
 
 .company-overview-box {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   position: relative;
   color: black;
@@ -21,6 +21,18 @@ body {
   font-size: 16px;
   text-align: justify;
   line-height: 1.5em;
+}
+
+.company-key-metrics-box {
+  position: relative;
+  color: black;
+}
+
+.company-key-metrics-box .metrics-title {
+  margin-bottom: 10px;
+
+  font-size: 32px;
+  font-weight: 550;
 }
 
 .company-key-metrics-box .company-key-metrics {
