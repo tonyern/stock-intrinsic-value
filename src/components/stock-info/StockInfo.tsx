@@ -29,9 +29,19 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         cashFromFinancing: number,
         cashFromInvesting: number
     ): number => {
-        let test = calculateNOPAT(ebit, marginalTaxRate) / investedCapital(currentLiabilities, 
-            longTermDebt, commonStock, retainedEarnings, cashFromFinancing, cashFromInvesting);
-        console.log("ROIC = " + test);
+        // Alpha Vantage API has some "None" fields.
+        // Check for those and return 0 as not valid.
+        if (ebit.toString() === "None" ||
+        marginalTaxRate.toString() === "None" ||
+        currentLiabilities.toString() === "None" ||
+        longTermDebt.toString() === "None" ||
+        commonStock.toString() === "None" ||
+        retainedEarnings.toString() === "None" ||
+        cashFromFinancing.toString() === "None" ||
+        cashFromInvesting.toString() === "None") {
+            return 0;
+        }
+
         return (calculateNOPAT(ebit, marginalTaxRate) / investedCapital(currentLiabilities, 
             longTermDebt, commonStock, retainedEarnings, cashFromFinancing, cashFromInvesting));
     }
@@ -63,9 +73,6 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         retainedEarnings: number,
         cashFromFinancing: number,
         cashFromInvesting: number): number => {
-            /*let test = currentLiabilities + longTermDebt + commonStock + retainedEarnings + 
-            cashFromFinancing + cashFromInvesting;
-            console.log("Invested Capital = " + test);*/
         return (currentLiabilities + longTermDebt + commonStock + retainedEarnings + 
             cashFromFinancing + cashFromInvesting);
     };
@@ -77,7 +84,19 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
      * @returns Interest Coverage Ratio.
      */
     const interestCoverageRatio = (operatingIncome: number, interestExpense: number): number => {
-        return (operatingIncome / interestExpense);
+        // Alpha Vantage API has some "None" fields.
+        // Check for those and return 0 as not valid.
+        if (operatingIncome.toString() === "None" ||
+            interestExpense.toString() === "None") {
+            return 0;
+        }
+
+        // Uncomment below for debugging purposes.
+        /*console.log("Operating Income = " + operatingIncome);
+        console.log("Interest Expense = " + interestExpense);
+        console.log("Interest Coverage Ratio = " + (operatingIncome / interestExpense));*/
+
+        return operatingIncome / interestExpense;
     };
     
     /**
@@ -88,6 +107,19 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
      * @returns How long it would take a company to payback their debts.
      */
     const debtPaybackTime = (longTermDebt: number, operatingCashFlow: number, capitalExpenditures: number): number => {
+        // Alpha Vantage API has some "None" fields.
+        // Check for those and return 0 as not valid.
+        if (longTermDebt.toString() === "None" ||
+            operatingCashFlow.toString() === "None" ||
+            capitalExpenditures.toString() === "None") {
+            return 0;
+        }
+
+        // Uncomment below for debugging purposes.
+        /*console.log("Long Term Debt = " + longTermDebt);
+        console.log("Free Cash Flow = " + (calculateFreeCashFlow(operatingCashFlow, capitalExpenditures)));
+        console.log("Debt Payback Time = " + (longTermDebt / calculateFreeCashFlow(operatingCashFlow, capitalExpenditures)));*/
+        
         return (longTermDebt / calculateFreeCashFlow(operatingCashFlow, capitalExpenditures));
     };
 
@@ -98,6 +130,11 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
      * @returns Free Cash Flow
      */
     const calculateFreeCashFlow = (operatingCashFlow: number, capitalExpenditures: number): number => {
+        // Uncomment below for debugging purposes.
+        /*console.log("Operating Cash Flow = " + operatingCashFlow);
+        console.log("Capital Expenditures = " + capitalExpenditures);
+        console.log("Free Cash Flow = " + (operatingCashFlow - capitalExpenditures));*/
+
         return operatingCashFlow - capitalExpenditures;
     };
 
