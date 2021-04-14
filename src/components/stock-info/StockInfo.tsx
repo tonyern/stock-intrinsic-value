@@ -129,40 +129,31 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                     {/** Below is the earnings per share. */}
                                     <td>{roundNumber(stockOverview.EPS)}</td>
                                     {/** Below is the return on invested capital. */}
-                                    {typeof stockBalanceSheet.annualReports !== undefined &&
-                                    stockCashFlow.annualReports !== undefined &&
-                                    stockIncomeStatement.annualReports !== undefined ? (
-                                        <td>
-                                            {roundNumber(returnOnInvestedCapital(
-                                                stockIncomeStatement.annualReports[0].ebit,
-                                                0.28,
-                                                stockBalanceSheet.annualReports[0].totalCurrentLiabilities,
-                                                stockBalanceSheet.annualReports[0].longTermDebt,
-                                                stockBalanceSheet.annualReports[0].commonStock,
-                                                stockBalanceSheet.annualReports[0].retainedEarnings,
-                                                stockCashFlow.annualReports[0].cashflowFromInvestment,
-                                                stockCashFlow.annualReports[0].cashflowFromFinancing
-                                            ))}
-                                        </td>
-                                    ): (<td>N/A</td>)}
-                                    {/** Below is interest coverage ratio. */}
-                                    {typeof stockIncomeStatement.annualReports !== undefined ? (
-                                        <td>
-                                            {roundNumber(interestCoverageRatio(
-                                            stockIncomeStatement.annualReports[0].operatingIncome, 
-                                            stockIncomeStatement.annualReports[0].interestExpense))}
-                                        </td>
-                                    ): (<td>N/A</td>)}
-                                    {/** Below is debt payback time. */}
-                                    {typeof stockBalanceSheet.annualReports !== undefined &&
-                                    typeof stockCashFlow.annualReports !== undefined ? (
-                                        <td>
-                                            {roundNumber(debtPaybackTime(
+                                    <td>
+                                        {roundNumber(returnOnInvestedCapital(
+                                            stockIncomeStatement.annualReports[0].ebit,
+                                            0.28,
+                                            stockBalanceSheet.annualReports[0].totalCurrentLiabilities,
                                             stockBalanceSheet.annualReports[0].longTermDebt,
-                                            stockCashFlow.annualReports[0].operatingCashflow,
-                                            stockCashFlow.annualReports[0].capitalExpenditures))}
-                                        </td>
-                                    ): (<td>N/A</td>)}
+                                            stockBalanceSheet.annualReports[0].commonStock,
+                                            stockBalanceSheet.annualReports[0].retainedEarnings,
+                                            stockCashFlow.annualReports[0].cashflowFromInvestment,
+                                            stockCashFlow.annualReports[0].cashflowFromFinancing
+                                        ))}
+                                    </td>
+                                    {/** Below is interest coverage ratio. */}
+                                    <td>
+                                        {roundNumber(interestCoverageRatio(
+                                        stockIncomeStatement.annualReports[0].operatingIncome, 
+                                        stockIncomeStatement.annualReports[0].interestExpense))}
+                                    </td>
+                                    {/** Below is debt payback time. */}
+                                    <td>
+                                        {roundNumber(debtPaybackTime(
+                                        stockBalanceSheet.annualReports[0].longTermDebt,
+                                        stockCashFlow.annualReports[0].operatingCashflow,
+                                        stockCashFlow.annualReports[0].capitalExpenditures))}
+                                    </td>
                                     {/** Below is the PE Ratio. */}
                                     <td>{roundNumber(stockOverview.PERatio)}</td>
                                 </tr>

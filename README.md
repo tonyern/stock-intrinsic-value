@@ -5,3 +5,7 @@ Stock Intrinsic Value is a program where user enters a stock ticker of any publi
 # Technologies Used
 
 Developed within Visual Studio Code. Languages used are JavaScript and TypeScript. React is used as the front-end library to build out app components. Makes use of financial APIs such as Alpha Vantage to get stock information when requested by user. Axios is used to fetch data from API.
+
+# What the App Looks Like
+
+![Screenshot of Stock Intrinsic Value App]()
