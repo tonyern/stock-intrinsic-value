@@ -8,4 +8,4 @@ Developed within Visual Studio Code. Languages used are JavaScript and TypeScrip
 
 # What the App Looks Like
 
-![Screenshot of Stock Intrinsic Value App]()
+![Screenshot of Stock Intrinsic Value App](https://github.com/tonyern/stock-intrinsic-value/blob/master/public/stock-intrinsic-value-app.png)
