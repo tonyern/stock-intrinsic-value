@@ -3,15 +3,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.company-overview-box .company-name {
-  font-size: 48px;
+.company-overview-box {
+  margin-bottom: 100px;
+
+  position: relative;
   color: black;
+}
+
+.company-overview-box .company-name {
+  margin-bottom: 25px;
+
+  font-size: 48px;
   font-weight: 900;
 }
 
 .company-overview-box .company-about {
   font-size: 16px;
-  color: black;
   text-align: justify;
   line-height: 1.5em;
 }
@@ -22,18 +29,17 @@ body {
 
 .welcome-box {
   position: relative;
+  color: black;
 }
 
 .welcome-box .welcome-title {
   margin-bottom: 40px;
 
   font-size: 48px;
-  color: black;
   font-weight: 900;
 }
 
 .welcome-box .welcome-subtitle {
   font-size: 28px;
-  color: black;
   font-weight: 400;
 }
