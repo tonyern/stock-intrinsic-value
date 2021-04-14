@@ -113,7 +113,9 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                         <div className="company-about">{stockOverview.Description}</div>
                     </div>
                     <div className="company-key-metrics-box">
-                        <div className="metrics-title"><u>Intrinsic Value Metrics</u></div>
+                        <div className="metrics-title">
+                            <u>Intrinsic Value Metrics</u>
+                        </div>
                         <table className="company-key-metrics">
                             <tbody>
                                 <tr>
