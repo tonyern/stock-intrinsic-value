@@ -170,7 +170,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                 <tr>
                                     {/** Below is the earnings per share. */}
                                     {stockOverview.EPS.toString() !== "None" ?
-                                    (<td>{stockOverview.EPS}</td>) : (<td>N/A</td>)}
+                                    (<td>{roundNumber(stockOverview.EPS)}</td>) : (<td>N/A</td>)}
                                     {/** Below is the return on invested capital. */}
                                     <td>N/A
                                         {/*roundNumber(returnOnInvestedCapital(
@@ -199,7 +199,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                     </td>
                                     {/** Below is the PE Ratio. */}
                                     {stockOverview.PERatio.toString() !== "None" ?
-                                    (<td>{stockOverview.PERatio}</td>) : (<td>N/A</td>)}
+                                    (<td>{roundNumber(stockOverview.PERatio)}</td>) : (<td>N/A</td>)}
                                 </tr>
                                 <tr>
                                     <td></td>
