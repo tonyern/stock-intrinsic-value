@@ -39,7 +39,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         retainedEarnings.toString() === "None" ||
         cashFromFinancing.toString() === "None" ||
         cashFromInvesting.toString() === "None") {
-            return 0;
+            return -1;
         }
 
         return (calculateNOPAT(ebit, marginalTaxRate) / investedCapital(currentLiabilities, 
@@ -88,7 +88,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         // Check for those and return 0 as not valid.
         if (operatingIncome.toString() === "None" ||
             interestExpense.toString() === "None") {
-            return 0;
+            return -1;
         }
 
         // Uncomment below for debugging purposes.
@@ -112,7 +112,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         if (longTermDebt.toString() === "None" ||
             operatingCashFlow.toString() === "None" ||
             capitalExpenditures.toString() === "None") {
-            return 0;
+            return -1;
         }
 
         // Uncomment below for debugging purposes.
