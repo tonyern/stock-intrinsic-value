@@ -32,7 +32,7 @@ Debt Payback Time measures how long would it take for a company to payback all d
 
 ### `PE Ratio`
 
-PE Ratio, Price to Earnings Ratio, compares the current trading price with its recently reported earnings per share. The metric tells you how cheap or expensive a stock is. A PE Ratio of 15 or under means a stock is cheap. A PE Ratio over 15 means a stock is expensive.
+PE Ratio, Price to Earnings Ratio, compares the current trading price with its recently reported earnings per share. The metric tells you how cheap or expensive a stock is. A PE Ratio of 15 or under means a stock is cheap. A PE Ratio over 15 means a stock is expensive. If the PE Ratio is a negative number, then that means the company is losing money.
 
 # Disclaimer
 
