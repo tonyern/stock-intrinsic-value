@@ -2,6 +2,11 @@ import "./stock-info.css";
 
 // @ts-ignore
 const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncomeStatement }): JSX.Element => {
+    /**
+     * Rounds a number to the next two decimal spots.
+     * @param value Number to round.
+     * @returns A number with two decimal spots.
+     */
     const roundNumber = (value: number): number => {
         return Math.round(value * 100) / 100;
     };
