@@ -194,6 +194,31 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                     {/** Below is the PE Ratio. */}
                                     <td>{roundNumber(stockOverview.PERatio)}</td>
                                 </tr>
+                                <tr>
+                                    <td></td>
+                                    {roundNumber(returnOnInvestedCapital(
+                                            stockIncomeStatement.annualReports[0].ebit,
+                                            0.28,
+                                            stockBalanceSheet.annualReports[0].totalCurrentLiabilities,
+                                            stockBalanceSheet.annualReports[0].longTermDebt,
+                                            stockBalanceSheet.annualReports[0].commonStock,
+                                            stockBalanceSheet.annualReports[0].retainedEarnings,
+                                            stockCashFlow.annualReports[0].cashflowFromInvestment,
+                                            stockCashFlow.annualReports[0].cashflowFromFinancing
+                                        )) >= 10 ?
+                                    (<td>(Effective)</td>) : (<td>(Not Effective)</td>)}
+                                    {roundNumber(interestCoverageRatio(
+                                        stockIncomeStatement.annualReports[0].operatingIncome, 
+                                        stockIncomeStatement.annualReports[0].interestExpense)) >= 6 ?
+                                    (<td>(Low Debt)</td>) : (<td>(High Debt)</td>)}
+                                    {roundNumber(debtPaybackTime(
+                                        stockBalanceSheet.annualReports[0].longTermDebt,
+                                        stockCashFlow.annualReports[0].operatingCashflow,
+                                        stockCashFlow.annualReports[0].capitalExpenditures)) >= 3 ?
+                                    <td>(Long Time)</td> : (<td>(Short Time)</td>)}
+                                    {roundNumber(stockOverview.PERatio) >= 15 ? 
+                                    (<td>(Expensive)</td>) : (<td>(Cheap)</td>)}
+                                </tr>
                             </tbody>
                         </table>
                     </div>
