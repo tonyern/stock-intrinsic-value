@@ -44,7 +44,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         retainedEarnings.toString() === "None" ||
         cashFromFinancing.toString() === "None" ||
         cashFromInvesting.toString() === "None") {
-            return -1;
+            return 0;
         }
 
         return (calculateNOPAT(ebit, marginalTaxRate) / investedCapital(currentLiabilities, 
@@ -93,7 +93,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         // Check for those and return 0 as not valid.
         if (operatingIncome.toString() === "None" ||
             interestExpense.toString() === "None") {
-            return -1;
+            return 0;
         }
 
         // Uncomment below for debugging purposes.
@@ -117,7 +117,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         if (longTermDebt.toString() === "None" ||
             operatingCashFlow.toString() === "None" ||
             capitalExpenditures.toString() === "None") {
-            return -1;
+            return 0;
         }
 
         // Uncomment below for debugging purposes.
@@ -169,10 +169,11 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                 </tr>
                                 <tr>
                                     {/** Below is the earnings per share. */}
-                                    <td>{roundNumber(stockOverview.EPS)}</td>
+                                    {stockOverview.EPS.toString() !== "None" ?
+                                    (<td>{stockOverview.EPS}</td>) : (<td>N/A</td>)}
                                     {/** Below is the return on invested capital. */}
-                                    <td>
-                                        {roundNumber(returnOnInvestedCapital(
+                                    <td>N/A
+                                        {/*roundNumber(returnOnInvestedCapital(
                                             stockIncomeStatement.annualReports[0].ebit,
                                             0.28,
                                             stockBalanceSheet.annualReports[0].totalCurrentLiabilities,
@@ -181,7 +182,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                             stockBalanceSheet.annualReports[0].retainedEarnings,
                                             stockCashFlow.annualReports[0].cashflowFromInvestment,
                                             stockCashFlow.annualReports[0].cashflowFromFinancing
-                                        ))}
+                                        ))*/}
                                     </td>
                                     {/** Below is interest coverage ratio. */}
                                     <td>
@@ -197,7 +198,8 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                         stockCashFlow.annualReports[0].capitalExpenditures))}
                                     </td>
                                     {/** Below is the PE Ratio. */}
-                                    <td>{roundNumber(stockOverview.PERatio)}</td>
+                                    {stockOverview.PERatio.toString() !== "None" ?
+                                    (<td>{stockOverview.PERatio}</td>) : (<td>N/A</td>)}
                                 </tr>
                                 <tr>
                                     <td></td>
