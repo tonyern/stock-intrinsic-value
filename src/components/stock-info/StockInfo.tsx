@@ -219,9 +219,14 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                         {roundNumber(debtPaybackTime(
                                             stockBalanceSheet.annualReports[0].longTermDebt,
                                             stockCashFlow.annualReports[0].operatingCashflow,
-                                            stockCashFlow.annualReports[0].capitalExpenditures)) >= 3 ?
+                                            stockCashFlow.annualReports[0].capitalExpenditures)) >= 3 ||
+                                                debtPaybackTime(
+                                                stockBalanceSheet.annualReports[0].longTermDebt,
+                                                stockCashFlow.annualReports[0].operatingCashflow,
+                                                stockCashFlow.annualReports[0].capitalExpenditures) <= 0 ?
                                     <td>(Long Time)</td> : (<td>(Short Time)</td>)}
-                                        {roundNumber(stockOverview.PERatio) >= 15 ? 
+                                        {roundNumber(stockOverview.PERatio) >= 15 || 
+                                            roundNumber(stockOverview.PERatio) <= 0 ? 
                                             (<td>(Expensive)</td>) : (<td>(Cheap)</td>)}
                                 </tr>
                             </tbody>
