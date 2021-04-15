@@ -44,7 +44,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
 
         return (calculateNOPAT(ebit, marginalTaxRate) / investedCapital(currentLiabilities, 
             longTermDebt, commonStock, retainedEarnings, cashFromFinancing, cashFromInvesting));
-    }
+    };
 
     /**
      * Calculating net operating profit after taxes.
