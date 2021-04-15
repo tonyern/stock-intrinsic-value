@@ -8,9 +8,9 @@ Developed within Visual Studio Code. Languages used are JavaScript and TypeScrip
 
 # Instructions on How to Use App
 
-Using it is simple, enter in a stock ticker of a publicly-traded company. You can do a search on the search engine typing in -----> "{company} stock ticker" to get the ticker. Navigate back to the app and enter that ticker into the search bar and hit enter.\
+Using it is simple, enter in a stock ticker of a publicly-traded company. You can do a search on the search engine typing in -----> "{company} stock ticker" to get the ticker. Navigate back to the app and enter that ticker into the search bar and hit enter.
 
-After hitting enter, you are presented with the company name, stock ticker, company summary on what they do, and financial metrics. The meat here is understanding the financial metrics which will be explained below.\
+After hitting enter, you are presented with the company name, stock ticker, company summary on what they do, and financial metrics. The meat here is understanding the financial metrics which will be explained below.
 
 ## How to Read and Understand the Financial Metrics
 
