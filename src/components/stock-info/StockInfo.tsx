@@ -170,10 +170,10 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                 <tr>
                                     {/** Below is the earnings per share. */}
                                     {stockOverview.EPS.toString() !== "None" ?
-                                    (<td>{roundNumber(stockOverview.EPS)}</td>) : (<td>N/A</td>)}
+                                    (<td>{roundNumber(stockOverview.EPS)}</td>) : (<td>0</td>)}
                                     {/** Below is the return on invested capital. */}
-                                    <td>N/A
-                                        {/*roundNumber(returnOnInvestedCapital(
+                                    <td>
+                                        {roundNumber(returnOnInvestedCapital(
                                             stockIncomeStatement.annualReports[0].ebit,
                                             0.28,
                                             stockBalanceSheet.annualReports[0].totalCurrentLiabilities,
@@ -182,7 +182,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                             stockBalanceSheet.annualReports[0].retainedEarnings,
                                             stockCashFlow.annualReports[0].cashflowFromInvestment,
                                             stockCashFlow.annualReports[0].cashflowFromFinancing
-                                        ))*/}
+                                        ))}
                                     </td>
                                     {/** Below is interest coverage ratio. */}
                                     <td>
@@ -199,7 +199,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                     </td>
                                     {/** Below is the PE Ratio. */}
                                     {stockOverview.PERatio.toString() !== "None" ?
-                                    (<td>{roundNumber(stockOverview.PERatio)}</td>) : (<td>N/A</td>)}
+                                    (<td>{roundNumber(stockOverview.PERatio)}</td>) : (<td>0</td>)}
                                 </tr>
                                 <tr>
                                     <td></td>
