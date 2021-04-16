@@ -1,29 +1,7 @@
-import { useState } from 'react';
-import SearchBar from "./components/search-bar/SearchBar";
-import StockInfo from "./components/stock-info/StockInfo";
+import Overlay from "./components/overlay/Overlay";
 
-const App = (): JSX.Element => {
-  const [stockOverview, setStockOverview] = useState({});
-  const [stockBalanceSheet, setBalanceSheet] = useState({});
-  const [stockCashFlow, setStockCashFlow] = useState({});
-  const [stockIncomeStatement, setStockIncomeStatement] = useState({});
-
-  return (
-    <>
-      <main>
-        <SearchBar 
-          stockOverview={setStockOverview}
-          stockBalanceSheet={setBalanceSheet}
-          stockCashFlow={setStockCashFlow}
-          stockIncomeStatement={setStockIncomeStatement} />
-        <StockInfo 
-          stockOverview={stockOverview} 
-          stockBalanceSheet={stockBalanceSheet}
-          stockCashFlow={stockCashFlow}
-          stockIncomeStatement={stockIncomeStatement} />
-      </main>
-    </>
-  );
-};
+const App = (): JSX.Element => (
+  <Overlay />
+);
 
 export default App;
