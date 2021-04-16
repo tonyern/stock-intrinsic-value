@@ -44,8 +44,28 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         retainedEarnings.toString() === "None" ||
         cashFromFinancing.toString() === "None" ||
         cashFromInvesting.toString() === "None") {
+            
+            console.log("Ebit = " + ebit);
+            console.log("Marginal Tax Rate = " + marginalTaxRate);
+            console.log("Current Liabilities = " + currentLiabilities);
+            console.log("Long Term Debt = " + longTermDebt);
+            console.log("Common Stock = " + commonStock);
+            console.log("Retained Earnings = " + retainedEarnings);
+            console.log("Cash From Financing = " + cashFromFinancing);
+            console.log("Cash From Investing = " + cashFromInvesting);
+
             return 0;
         }
+
+        // Uncomment below for debugging.
+        /*console.log("Ebit = " + ebit);
+        console.log("Marginal Tax Rate = " + marginalTaxRate);
+        console.log("Current Liabilities = " + currentLiabilities);
+        console.log("Long Term Debt = " + longTermDebt);
+        console.log("Common Stock = " + commonStock);
+        console.log("Retained Earnings = " + retainedEarnings);
+        console.log("Cash From Financing = " + cashFromFinancing);
+        console.log("Cash From Investing = " + cashFromInvesting);*/
 
         return (calculateNOPAT(ebit, marginalTaxRate) / investedCapital(currentLiabilities, 
             longTermDebt, commonStock, retainedEarnings, cashFromFinancing, cashFromInvesting));
@@ -78,8 +98,9 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         retainedEarnings: number,
         cashFromFinancing: number,
         cashFromInvesting: number): number => {
-        return (currentLiabilities + longTermDebt + commonStock + retainedEarnings + 
-            cashFromFinancing + cashFromInvesting);
+
+        return (((currentLiabilities / 1000) + (longTermDebt / 1000) + (commonStock / 1000) + (retainedEarnings / 1000) + 
+            (cashFromFinancing / 1000) + (cashFromInvesting / 1000)) * 1000);
     };
 
     /**
@@ -175,7 +196,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                     <td>
                                         {roundNumber(returnOnInvestedCapital(
                                             stockIncomeStatement.annualReports[0].ebit,
-                                            0.28,
+                                            0.20,
                                             stockBalanceSheet.annualReports[0].totalCurrentLiabilities,
                                             stockBalanceSheet.annualReports[0].longTermDebt,
                                             stockBalanceSheet.annualReports[0].commonStock,
