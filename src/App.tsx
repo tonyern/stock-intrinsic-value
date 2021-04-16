@@ -12,10 +12,10 @@ const App = (): JSX.Element => {
     <>
       <main>
         <SearchBar 
-          overviewProps={setStockOverview}
-          balanceSheetProps={setBalanceSheet}
-          cashFlowProps={setStockCashFlow}
-          incomeStatementProps={setStockIncomeStatement} />
+          stockOverview={setStockOverview}
+          stockBalanceSheet={setBalanceSheet}
+          stockCashFlow={setStockCashFlow}
+          stockIncomeStatement={setStockIncomeStatement} />
         <StockInfo 
           stockOverview={stockOverview} 
           stockBalanceSheet={stockBalanceSheet}

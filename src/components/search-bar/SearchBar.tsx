@@ -3,17 +3,17 @@ import axios, { AxiosResponse } from "axios";
 import "./search-bar.css";
 
 interface SearchBarInterface {
-  overviewProps: React.Dispatch<React.SetStateAction<{}>>;
-  balanceSheetProps: React.Dispatch<React.SetStateAction<{}>>;
-  cashFlowProps: React.Dispatch<React.SetStateAction<{}>>;
-  incomeStatementProps: React.Dispatch<React.SetStateAction<{}>>;
+  stockOverview: React.Dispatch<React.SetStateAction<{}>>;
+  stockBalanceSheet: React.Dispatch<React.SetStateAction<{}>>;
+  stockCashFlow: React.Dispatch<React.SetStateAction<{}>>;
+  stockIncomeStatement: React.Dispatch<React.SetStateAction<{}>>;
 };
 
 const SearchBar = ({ 
-    overviewProps, 
-    balanceSheetProps, 
-    cashFlowProps, 
-    incomeStatementProps }: SearchBarInterface): JSX.Element => {
+    stockOverview, 
+    stockBalanceSheet, 
+    stockCashFlow, 
+    stockIncomeStatement }: SearchBarInterface): JSX.Element => {
   const alphaVantageAPI = {
     key: "NCZ4EHV0ASHS9UYK",
     base: "https://www.alphavantage.co/query?",
@@ -48,7 +48,7 @@ const SearchBar = ({
           `${alphaVantageAPI.base}function=OVERVIEW&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
-          overviewProps(response.data);
+          stockOverview(response.data);
           //console.log("OVERVIEW");
           console.log(response.data);
         })
@@ -70,7 +70,7 @@ const SearchBar = ({
           `${alphaVantageAPI.base}function=BALANCE_SHEET&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
-          balanceSheetProps(response.data);
+          stockBalanceSheet(response.data);
           //console.log("BALANCE SHEET");
           //console.log(response.data);
         })
@@ -92,7 +92,7 @@ const SearchBar = ({
           `${alphaVantageAPI.base}function=CASH_FLOW&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
-          cashFlowProps(response.data);
+          stockCashFlow(response.data);
           //console.log("CASH FLOW");
           //console.log(response.data);
         })
@@ -114,7 +114,7 @@ const SearchBar = ({
           `${alphaVantageAPI.base}function=INCOME_STATEMENT&symbol=${query}&apikey=${alphaVantageAPI.key}`
         )
         .then((response: AxiosResponse<any>) => {
-          incomeStatementProps(response.data);
+          stockIncomeStatement(response.data);
           //console.log("INCOME STATEMENT");
           //console.log(response.data);
         })
