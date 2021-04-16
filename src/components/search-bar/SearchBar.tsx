@@ -50,7 +50,7 @@ const SearchBar = ({
         .then((response: AxiosResponse<any>) => {
           overviewProps(response.data);
           //console.log("OVERVIEW");
-          //console.log(response.data);
+          console.log(response.data);
         })
         .catch((error: any) => {
           // Error if stock name was not found or invalid input.
