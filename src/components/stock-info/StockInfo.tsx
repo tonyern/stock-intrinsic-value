@@ -45,14 +45,14 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         cashFromFinancing.toString() === "None" ||
         cashFromInvesting.toString() === "None") {
             
-            console.log("Ebit = " + ebit);
+            /*console.log("Ebit = " + ebit);
             console.log("Marginal Tax Rate = " + marginalTaxRate);
             console.log("Current Liabilities = " + currentLiabilities);
             console.log("Long Term Debt = " + longTermDebt);
             console.log("Common Stock = " + commonStock);
             console.log("Retained Earnings = " + retainedEarnings);
             console.log("Cash From Financing = " + cashFromFinancing);
-            console.log("Cash From Investing = " + cashFromInvesting);
+            console.log("Cash From Investing = " + cashFromInvesting);*/
 
             return 0;
         }
