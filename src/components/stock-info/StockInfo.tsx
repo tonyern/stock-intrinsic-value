@@ -67,8 +67,8 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
         console.log("Cash From Financing = " + cashFromFinancing);
         console.log("Cash From Investing = " + cashFromInvesting);*/
 
-        return (calculateNOPAT(ebit, marginalTaxRate) / investedCapital(currentLiabilities, 
-            longTermDebt, commonStock, retainedEarnings, cashFromFinancing, cashFromInvesting));
+        return ((calculateNOPAT(ebit, marginalTaxRate) / investedCapital(currentLiabilities, 
+            longTermDebt, commonStock, retainedEarnings, cashFromFinancing, cashFromInvesting)) * 100);
     };
 
     /**
