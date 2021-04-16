@@ -10,10 +10,10 @@ it("Search bar renders without crashing", () => {
   const cashFlowProps = jest.fn();
   const incomeStatementProps = jest.fn();
   ReactDOM.render(<SearchBar 
-    overviewProps={overviewProps}
-    balanceSheetProps={balanceSheetProps}
-    cashFlowProps={cashFlowProps}
-    incomeStatementProps={incomeStatementProps} />, div);
+    stockOverview={overviewProps}
+    stockBalanceSheet={balanceSheetProps}
+    stockCashFlow={cashFlowProps}
+    stockIncomeStatement={incomeStatementProps} />, div);
 });
 
 it("Renders with placeholder text correctly", () => {
@@ -22,10 +22,10 @@ it("Renders with placeholder text correctly", () => {
   const cashFlowProps = jest.fn();
   const incomeStatementProps = jest.fn();
   const { queryByTestId, queryByPlaceholderText } = render(<SearchBar 
-    overviewProps={overviewProps}
-    balanceSheetProps={balanceSheetProps}
-    cashFlowProps={cashFlowProps}
-    incomeStatementProps={incomeStatementProps}  />);
+    stockOverview={overviewProps}
+    stockBalanceSheet={balanceSheetProps}
+    stockCashFlow={cashFlowProps}
+    stockIncomeStatement={incomeStatementProps}  />);
   expect(queryByTestId("search-input-test")).toBeTruthy();
   expect(queryByPlaceholderText("Search Stock Ticker")).toBeTruthy();
 });
