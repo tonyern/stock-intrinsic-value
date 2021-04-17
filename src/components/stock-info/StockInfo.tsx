@@ -1,5 +1,9 @@
 import "./stock-info.css";
 
+interface StockInfoInterface {
+  stockOverview: {Name: string, Symbol: string, Description: string, LatestQuarter: string, EPS: number, PERatio: number};
+};
+
 // @ts-ignore
 const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncomeStatement }): JSX.Element => {
     /**
