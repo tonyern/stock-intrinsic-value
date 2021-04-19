@@ -22,6 +22,7 @@ it("Testing rounding function to the two decimal places", () => {
   });
 
   expect(roundNumber(3.5756400310318077)).toBe(3.58);
+  expect(roundNumber(3.999)).toBe(4);
 });
 
 describe("Testing Return on Invested Capital", () => {
@@ -78,6 +79,9 @@ describe("Testing Return on Invested Capital", () => {
       expect(calculateNOPAT(ebit, marginalTaxRate)).toBe(3226300000);
       expect(investedCapital(currentLiabilities, longTermDebt, commonStock, retainedEarnings, cashFromFinancing, cashFromInvesting)).toBe(369388000000);
       expect(returnOnInvestedCapital(ebit, marginalTaxRate, currentLiabilities, longTermDebt, commonStock, retainedEarnings, cashFromFinancing, cashFromInvesting)).toBe(0.8734176529827714);
+
+      // Testing empty fields. If one or more data is not available, expect 0 in return.
+      expect(returnOnInvestedCapital(ebit, marginalTaxRate, "None", longTermDebt, commonStock, retainedEarnings, cashFromFinancing, cashFromInvesting)).toBe(0);
   });
 });
 
@@ -94,6 +98,9 @@ describe("Testing Interest Coverage Ratio", () => {
 
       // Using IBM stock info example from Alpha Vantage.
       expect(interestCoverageRatio(4609000000, 1289000000)).toBe(3.5756400310318077);
+
+      // Testing if fields from API is empty. Here operating income cannot be found.
+      expect(interestCoverageRatio("None", 1289000000)).toBe(0);
   });
 });
 
@@ -118,5 +125,8 @@ describe("Testing Debt Payback Time", () => {
     // Using IBM stock info example from Alpha Vantage.
     expect(calculateFreeCashFlow(18197000000, 2618000000)).toBe(15579000000);
     expect(debtPaybackTime(122995000000, 18197000000, 2618000000)).toBe(7.8949226522883365);
+
+    // Testing if fields from API is empty. Here long term debt cannot be found.
+    expect(debtPaybackTime("None", 18197000000, 2618000000)).toBe(0);
   });
 });
