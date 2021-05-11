@@ -14,10 +14,9 @@ const SearchBar = ({
     stockBalanceSheet, 
     stockCashFlow, 
     stockIncomeStatement }: SearchBarInterface): JSX.Element => {
-  const alphaVantageAPI = {
-    key: "NCZ4EHV0ASHS9UYK",
-    base: "https://www.alphavantage.co/query?",
-  };
+  
+  const { ALPHA_VANTAGE_ACCESS_KEY } = process.env;
+  const alphaVantageAPI = "https://www.alphavantage.co/query?";
 
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -45,7 +44,7 @@ const SearchBar = ({
   const getOverview = (): void => {
     axios
         .get(
-          `${alphaVantageAPI.base}function=OVERVIEW&symbol=${query}&apikey=${alphaVantageAPI.key}`
+          `${alphaVantageAPI}function=OVERVIEW&symbol=${query}&apikey=${ALPHA_VANTAGE_ACCESS_KEY}`
         )
         .then((response: AxiosResponse<any>) => {
           stockOverview(response.data);
@@ -67,7 +66,7 @@ const SearchBar = ({
   const getBalanceSheet = (): void => {
     axios
         .get(
-          `${alphaVantageAPI.base}function=BALANCE_SHEET&symbol=${query}&apikey=${alphaVantageAPI.key}`
+          `${alphaVantageAPI}function=BALANCE_SHEET&symbol=${query}&apikey=${ALPHA_VANTAGE_ACCESS_KEY}`
         )
         .then((response: AxiosResponse<any>) => {
           stockBalanceSheet(response.data);
@@ -89,7 +88,7 @@ const SearchBar = ({
   const getCashFlow = (): void => {
     axios
         .get(
-          `${alphaVantageAPI.base}function=CASH_FLOW&symbol=${query}&apikey=${alphaVantageAPI.key}`
+          `${alphaVantageAPI}function=CASH_FLOW&symbol=${query}&apikey=${ALPHA_VANTAGE_ACCESS_KEY}`
         )
         .then((response: AxiosResponse<any>) => {
           stockCashFlow(response.data);
@@ -111,7 +110,7 @@ const SearchBar = ({
   const getIncomeStatement = (): void => {
     axios
         .get(
-          `${alphaVantageAPI.base}function=INCOME_STATEMENT&symbol=${query}&apikey=${alphaVantageAPI.key}`
+          `${alphaVantageAPI}function=INCOME_STATEMENT&symbol=${query}&apikey=${ALPHA_VANTAGE_ACCESS_KEY}`
         )
         .then((response: AxiosResponse<any>) => {
           stockIncomeStatement(response.data);
