@@ -15,7 +15,7 @@ const SearchBar = ({
     stockCashFlow, 
     stockIncomeStatement }: SearchBarInterface): JSX.Element => {
   
-  const { ALPHA_VANTAGE_ACCESS_KEY } = process.env;
+  const { REACT_APP_ALPHA_VANTAGE_ACCESS_KEY } = process.env;
   const alphaVantageAPI = "https://www.alphavantage.co/query?";
 
   const [query, setQuery] = useState("");
@@ -44,7 +44,7 @@ const SearchBar = ({
   const getOverview = (): void => {
     axios
         .get(
-          `${alphaVantageAPI}function=OVERVIEW&symbol=${query}&apikey=${ALPHA_VANTAGE_ACCESS_KEY}`
+          `${alphaVantageAPI}function=OVERVIEW&symbol=${query}&apikey=${REACT_APP_ALPHA_VANTAGE_ACCESS_KEY}`
         )
         .then((response: AxiosResponse<any>) => {
           stockOverview(response.data);
@@ -66,7 +66,7 @@ const SearchBar = ({
   const getBalanceSheet = (): void => {
     axios
         .get(
-          `${alphaVantageAPI}function=BALANCE_SHEET&symbol=${query}&apikey=${ALPHA_VANTAGE_ACCESS_KEY}`
+          `${alphaVantageAPI}function=BALANCE_SHEET&symbol=${query}&apikey=${REACT_APP_ALPHA_VANTAGE_ACCESS_KEY}`
         )
         .then((response: AxiosResponse<any>) => {
           stockBalanceSheet(response.data);
@@ -88,7 +88,7 @@ const SearchBar = ({
   const getCashFlow = (): void => {
     axios
         .get(
-          `${alphaVantageAPI}function=CASH_FLOW&symbol=${query}&apikey=${ALPHA_VANTAGE_ACCESS_KEY}`
+          `${alphaVantageAPI}function=CASH_FLOW&symbol=${query}&apikey=${REACT_APP_ALPHA_VANTAGE_ACCESS_KEY}`
         )
         .then((response: AxiosResponse<any>) => {
           stockCashFlow(response.data);
@@ -110,7 +110,7 @@ const SearchBar = ({
   const getIncomeStatement = (): void => {
     axios
         .get(
-          `${alphaVantageAPI}function=INCOME_STATEMENT&symbol=${query}&apikey=${ALPHA_VANTAGE_ACCESS_KEY}`
+          `${alphaVantageAPI}function=INCOME_STATEMENT&symbol=${query}&apikey=${REACT_APP_ALPHA_VANTAGE_ACCESS_KEY}`
         )
         .then((response: AxiosResponse<any>) => {
           stockIncomeStatement(response.data);
