@@ -16,6 +16,22 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
     };
 
     /**
+     * Calculating market price of a company.
+     * @param marketCap Market Capitalization of a company.
+     * @param sharesOutstanding How much shares the company has.
+     * @returns Current Market Price of a company.
+     */
+    const calculateMarketPrice = (marketCap: number, sharesOutstanding: number): number => {
+        // Alpha Vantage API has some "None" fields.
+        // Check for those and return 0 as not valid.
+        if (marketCap.toString() === "None" || sharesOutstanding.toString() === "None") {
+            return 0;
+        }
+
+        return marketCap / sharesOutstanding;
+    }
+
+    /**
      * Measures how effectively a capital is using its invested capital
      * to make money.
      * @param ebit 
@@ -186,6 +202,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                         <table className="company-key-metrics">
                             <tbody>
                                 <tr>
+                                    <th>Market Price</th>
                                     <th>EPS</th>
                                     <th>Return on Invested Capital (ROIC)</th>
                                     <th>Interest Coverage Ratio</th>
@@ -193,6 +210,13 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                     <th>PE Ratio</th>
                                 </tr>
                                 <tr>
+                                    {/** Below is the market price. */}
+                                    <td>
+                                        {roundNumber(calculateMarketPrice(
+                                            stockOverview.MarketCapitalization,
+                                            stockOverview.SharesOutstanding
+                                        ))}
+                                    </td>
                                     {/** Below is the earnings per share. */}
                                     {stockOverview.EPS.toString() !== "None" ?
                                     (<td>{roundNumber(stockOverview.EPS)}</td>) : (<td>0</td>)}
@@ -227,6 +251,7 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                                     (<td>{roundNumber(stockOverview.PERatio)}</td>) : (<td>0</td>)}
                                 </tr>
                                 <tr>
+                                    <td></td>
                                     <td></td>
                                         {roundNumber(returnOnInvestedCapital(
                                             stockIncomeStatement.annualReports[0].ebit,
