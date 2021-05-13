@@ -14,6 +14,11 @@ After hitting enter, you are presented with the company name, stock ticker, comp
 
 ## How to Read and Understand the Financial Metrics
 
+### `Market Price`
+
+Market Price is what the stock is currently trading at in the market. Here it is calculated with its
+market capitalization divided by its shares outstanding (how much shares the company has).
+
 ### `EPS`
 
 EPS, or Earnings per Share, is the company's profits divided by the number of shares it has of its common stock. The higher EPS is, the more profitable the company is considered. You would want to see an upward trending EPS when looking at past financial documents to today.
