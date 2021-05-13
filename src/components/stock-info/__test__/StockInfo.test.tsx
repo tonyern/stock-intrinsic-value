@@ -25,6 +25,23 @@ it("Testing rounding function to the two decimal places", () => {
   expect(roundNumber(3.999)).toBe(4);
 });
 
+describe("Testing Market Price", () => {
+  it("Market Cap / Shares Outstanding", () => {
+    const calculateMarketPrice = jest.fn((marketCap: number, sharesOutstanding: number) => {
+      if (marketCap.toString() === "None" || sharesOutstanding.toString() === "None") {
+        return 0;
+      }
+
+      return marketCap / sharesOutstanding;
+    });
+
+    expect(calculateMarketPrice(126254800896, 893523008)).toBe(141.29999984958417);
+    expect(calculateMarketPrice("None", 893523008)).toBe(0);
+    expect(calculateMarketPrice(126254800896, "None")).toBe(0);
+    expect(calculateMarketPrice("None", "None")).toBe(0);
+  });
+});
+
 describe("Testing Return on Invested Capital", () => {
   it("ROIC = NOPAT / Invested Capital", () => {
       const calculateNOPAT = jest.fn((ebit: number, marginalTaxRate: number) => {
