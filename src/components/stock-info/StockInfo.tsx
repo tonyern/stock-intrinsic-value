@@ -1,3 +1,7 @@
+// Imports for Tooltip on certain keywords.
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+
 import "./stock-info.css";
 
 interface StockInfoInterface {
@@ -202,12 +206,24 @@ const StockInfo = ({ stockOverview, stockBalanceSheet, stockCashFlow, stockIncom
                         <table className="company-key-metrics">
                             <tbody>
                                 <tr>
-                                    <th>Market Price</th>
-                                    <th>EPS</th>
-                                    <th>Return on Invested Capital (ROIC)</th>
-                                    <th>Interest Coverage Ratio</th>
-                                    <th>Debt Payback Time</th>
-                                    <th>PE Ratio</th>
+                                    <Tippy content="Current price the stock is trading at in the market">
+                                        <th>Market Price</th>
+                                    </Tippy>
+                                    <Tippy content="Company's profits divided by all existing shares. The higher EPS the better">
+                                        <th>EPS</th>
+                                    </Tippy>
+                                    <Tippy content="Ratio of how well a company is using its resources to make money. 10% or more is good">
+                                        <th>Return on Invested Capital (ROIC)</th>
+                                    </Tippy>
+                                    <Tippy content="Measures how much operating income is generated relative to interest expense. 6% or more is good">
+                                        <th>Interest Coverage Ratio</th>
+                                    </Tippy>
+                                    <Tippy content="How long it would take a company to pay off all its debts. The lower the better">
+                                        <th>Debt Payback Time</th>
+                                    </Tippy>
+                                    <Tippy content="Ratio of price to earnings. Measures how cheap or expensive a stock is. Generally, (depending on the industrial) 15% or less is cheap and more than 15% is expensive">
+                                        <th>PE Ratio</th>
+                                    </Tippy>
                                 </tr>
                                 <tr>
                                     {/** Below is the market price. */}
