@@ -39,6 +39,14 @@ body {
   width: 100%;
 }
 
+.tooltip-key-metrics {
+  color: blue;
+  text-decoration: dotted;
+  text-decoration-color: black;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+}
+
 .welcome-box {
   position: relative;
   color: black;
