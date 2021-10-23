@@ -21,6 +21,8 @@ const SearchBar = ({
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const [valid, setValid] = useState(false);
+
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -33,7 +35,16 @@ const SearchBar = ({
    */
   const search = (event: React.KeyboardEvent<HTMLDivElement>): void => {
     if (event.key === "Enter") {
+      setValid(false); // Assumed invalid stock ticker until otherwise.
       getOverview();
+
+      // Exit search function if data from overview is empty. No use in making other API calls.
+      if(!valid)
+      {
+        setQuery("");
+        return;
+      }
+      
       getBalanceSheet();
       getCashFlow();
       getIncomeStatement();
@@ -47,6 +58,7 @@ const SearchBar = ({
           `${alphaVantageAPI}function=OVERVIEW&symbol=${query}&apikey=${REACT_APP_ALPHA_VANTAGE_ACCESS_KEY}`
         )
         .then((response: AxiosResponse<any>) => {
+          setValid(true); // There is a response based on stock ticker so valid.
           stockOverview(response.data);
           //console.log("OVERVIEW");
           //console.log(response.data);
