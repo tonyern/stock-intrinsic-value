@@ -36,6 +36,9 @@ const SearchBar = ({
   const search = (event: React.KeyboardEvent<HTMLDivElement>): void => {
     if (event.key === "Enter") {
       getOverview();
+      getBalanceSheet();
+      getCashFlow();
+      getIncomeStatement();
 
       // Exit search function if data from overview is empty. No use in making other API calls.
       if(invalid)
@@ -45,9 +48,6 @@ const SearchBar = ({
         return;
       }
       
-      getBalanceSheet();
-      getCashFlow();
-      getIncomeStatement();
       setQuery("");
     }
   };
